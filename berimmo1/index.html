@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BERIMMO - Immobilien Revolution in Berlin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        /* Hero Section Text Animation */
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+
+        /* Section Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gallery Styles */
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+        }
+        
+        .gallery-slide.prev {
+            transform: translateX(-100%);
+        }
+        
+        .gallery-slide.next {
+            transform: translateX(100%);
+        }
+        
+        .gallery-dot {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-dot.active {
+            background-color: #2d5080;
+            transform: scale(1.2);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#333]">
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="https://static.readdy.ai/image/c2dd90fc406d7d04d15e04925690c4cc/a9d4b26cd4e6585cb336e6e9277d7509.png" alt="BERIMMO Logo" id="logo" class="h-10 transition-all duration-300">
+                <span id="nav-title" class="font-bold text-xl text-white">BERIMMO</span>
+            </a>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#hero" id="nav-link-1" class="font-semibold text-white hover:text-gray-300 transition-colors text-sm">Home</a></li>
+                    <li><a href="#about" id="nav-link-2" class="font-semibold text-white hover:text-gray-300 transition-colors text-sm">Über uns</a></li>
+                    <li><a href="#gallery" id="nav-link-3" class="font-semibold text-white hover:text-gray-300 transition-colors text-sm">Galerie</a></li>
+                    <li><a href="#steps" id="nav-link-4" class="font-semibold text-white hover:text-gray-300 transition-colors text-sm">Vermietungs-Steps</a></li>
+                    <li><a href="#contact" id="nav-link-5" class="font-semibold text-white hover:text-gray-300 transition-colors text-sm">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="relative h-screen bg-cover bg-center flex items-center justify-center text-white"
+            style="background-image: url('https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?q=80&w=2070&auto=format&fit=crop')"
+        >
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 text-center p-4">
+                <div class="animate-fade-in-up">
+                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight">BERIMMO</h1>
+                    <p class="mt-4 text-xl md:text-2xl italic">Revolutionäre Immobilienlösungen - Made in Berlin</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Sections Wrapper -->
+        <div class="container mx-auto px-6 py-12 md:py-20 space-y-16">
+            <!-- About Section -->
+            <section id="about" class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Über uns</h2>
+                <div class="bg-[#f9f9f9] p-6 border-l-4 border-[#2d5080] space-y-4 rounded-r-lg">
+                    <p class="font-bold">BERIMMO – das revolutionäre Immo-Startup Made in Berlin – for Berlin</p>
+                    <p>BERIMMO – gegründet von zwei qualifizierten und aufstrebenden Immobilienkaufleuten in Berlin, die es sich zur Aufgabe gemacht haben, die Immobilienwirtschaft – insbesondere den Vermietungssektor – nachhaltig zu revolutionieren.</p>
+                    <p>Basierend auf langjährigen Erfahrungen im klassischen Property-Management haben sie erkannt, wo die Schwachpunkte für Vermieter und Mieter liegen.<br />
+                    Und eines wurde dabei deutlich: Vermietung kann effizienter gehen. Viel effizienter.</p>
+                    <p>Aus dieser Idee und diesen Erkenntnissen entstand BERIMMO:<br />
+                    modern, digital, klar strukturiert.</p>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Unsere Galerie</h2>
+                <div class="bg-[#f9f9f9] p-6 rounded-lg">
+                    <div class="gallery-container relative h-64 md:h-96 overflow-hidden rounded-lg">
+                        <!-- Gallery Slides -->
+                        <div class="gallery-slides relative w-full h-full">
+                            <div class="gallery-slide active">
+                                <img src="img/1.jpg" alt="Design 1" class="gallery-image">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="img/2.jpg" alt="Design 2" class="gallery-image">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="img/3.jpg" alt="Design 3" class="gallery-image">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="img/4.jpg" alt="Design 4" class="gallery-image">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="img/5.jpg" alt="Design 5" class="gallery-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button id="gallery-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#1e3a5f] p-2 rounded-full shadow-md transition-all duration-300 z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button id="gallery-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#1e3a5f] p-2 rounded-full shadow-md transition-all duration-300 z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Dots Navigation -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                            <div class="gallery-dot w-3 h-3 bg-white/70 rounded-full active" data-index="0"></div>
+                            <div class="gallery-dot w-3 h-3 bg-white/70 rounded-full" data-index="1"></div>
+                            <div class="gallery-dot w-3 h-3 bg-white/70 rounded-full" data-index="2"></div>
+                            <div class="gallery-dot w-3 h-3 bg-white/70 rounded-full" data-index="3"></div>
+                            <div class="gallery-dot w-3 h-3 bg-white/70 rounded-full" data-index="4"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center mt-4 text-gray-600">Entdecken Sie unsere Design-Inspirationen</p>
+                </div>
+            </section>
+
+            <!-- Steps Section -->
+            <section id="steps" class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Unsere Vermietungs-Steps</h2>
+                <div class="flex flex-wrap justify-between gap-y-5">
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">1</span>
+                            Wohnung wird gemeldet
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Sie informieren uns über eine freiwerdende Wohnung.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">2</span>
+                            Objektaufnahme & Systemerfassung
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Wir erfassen alle Wohnungsdaten, erstellen Exposé, Fotos und Unterlagen.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">3</span>
+                            Matching
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Wir gleichen die Wohnungsdaten automatisch mit unserer verifizierten Interessentenkartei ab.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">4</span>
+                            Einzelbesichtigungen
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Wir koordinieren und führen individuelle Besichtigungen durch – ohne Massenandrang.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">5</span>
+                            Auswahl des passenden Mieters
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Die Bewerber werden gefiltert – passend zu Ihren Kriterien und Vermieterpräferenzen.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">6</span>
+                            Freigabe durch den Vermieter
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Sie entscheiden, wem die Wohnung zugesagt wird.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">7</span>
+                            Vertragsabschluss (optional)
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Wir bereiten den Mietvertrag vor und begleiten die Vertragsunterzeichnung.</p>
+                    </div>
+                    <div class="w-full md:w-[48%] bg-[#f0f5ff] p-4 rounded-md box-border">
+                        <div class="font-bold text-[#1e3a5f] mb-1 flex items-center">
+                            <span class="bg-[#2d5080] text-white w-[30px] h-[30px] rounded-full inline-flex items-center justify-center mr-2.5 font-bold flex-shrink-0">8</span>
+                            Wohnungsübergabe (optional)
+                        </div>
+                        <p class="m-0 pl-[40px] text-sm">Übergabeprotokoll, Schlüsselübergabe – alles dokumentiert und abgeschlossen.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Kontakt</h2>
+                <div class="bg-[#e8eff7] p-6 rounded-md">
+                    <h3 class="mt-0 text-[#1e3a5f] text-xl font-semibold">BERIMMO - Ihr Partner für moderne Vermietung</h3>
+                    <div class="mt-4 space-y-1">
+                        <p><strong>Telefon:</strong> <a href="tel:+493012345678" class="underline hover:text-[#2d5080]">+49 30 123 456 78</a></p>
+                        <p><strong>E-Mail:</strong> <a href="mailto:info@berimmo.de" class="underline hover:text-[#2d5080]">info@berimmo.de</a></p>
+                        <p><strong>Standort:</strong> Berlin</p>
+                        <p class="mt-4 font-semibold">Kontaktieren Sie uns für eine kostenlose Erstberatung!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a5f] text-white text-center p-4 text-sm">
+        <p>&copy; 2025 BERIMMO. Alle Rechte vorbehalten. | <a href="#" class="text-white hover:underline">Impressum</a> | <a href="#" class="text-white hover:underline">Datenschutz</a> | <a href="#" class="text-white hover:underline">AGB</a></p>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navTitle = document.getElementById('nav-title');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-white/95', 'shadow-lg', 'backdrop-blur-sm');
+                navTitle.classList.remove('text-white');
+                navTitle.classList.add('text-[#1e3a5f]');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white', 'hover:text-gray-300');
+                    link.classList.add('text-[#1e3a5f]', 'hover:text-[#2d5080]');
+                });
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-white/95', 'shadow-lg', 'backdrop-blur-sm');
+                navTitle.classList.add('text-white');
+                navTitle.classList.remove('text-[#1e3a5f]');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white', 'hover:text-gray-300');
+                    link.classList.remove('text-[#1e3a5f]', 'hover:text-[#2d5080]');
+                });
+            }
+        });
+
+        // Section Scroll Animation Effect
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gallery Functionality
+        const gallerySlides = document.querySelectorAll('.gallery-slide');
+        const galleryDots = document.querySelectorAll('.gallery-dot');
+        const prevButton = document.getElementById('gallery-prev');
+        const nextButton = document.getElementById('gallery-next');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Function to show a specific slide
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            gallerySlides.forEach(slide => slide.classList.remove('active'));
+            galleryDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            gallerySlides[index].classList.add('active');
+            galleryDots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+
+        // Function to show next slide
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % gallerySlides.length;
+            showSlide(nextIndex);
+        }
+
+        // Function to show previous slide
+        function prevSlide() {
+            let prevIndex = (currentSlide - 1 + gallerySlides.length) % gallerySlides.length;
+            showSlide(prevIndex);
+        }
+
+        // Event listeners for navigation
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+
+        // Event listeners for dots
+        galleryDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetInterval();
+            });
+        });
+
+        // Auto-advance slides
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        // Initialize gallery
+        startInterval();
+    </script>
+</body>
+</html>
