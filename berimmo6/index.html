@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BERIMMO - Immobilien Revolution in Berlin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: #000;
+  }
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .gallery-slide.active {
+    opacity: 1;
+  }
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery-dot.active {
+    background-color: white !important;
+    opacity: 1 !important;
+  }
+</style>
+</head>
+<body class="bg-white text-[#333]">
+
+<!-- Header / Navbar -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+    <a href="#" class="flex items-center space-x-2">
+      <img src="https://static.readdy.ai/image/c2dd90fc406d7d04d15e04925690c4cc/a9d4b26cd4e6585cb336e6e9277d7509.png" alt="BERIMMO Logo" class="h-8 sm:h-10 transition-all duration-300" />
+      <span id="nav-title" class="font-bold text-lg sm:text-xl text-white">BERIMMO</span>
+    </a>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#hero" class="text-white hover:text-[#2d5080] font-semibold">Home</a>
+      <a href="#about" class="text-white hover:text-[#2d5080] font-semibold">Über uns</a>
+      <a href="#gallery" class="text-white hover:text-[#2d5080] font-semibold">Galerie</a>
+      <a href="#steps" class="text-white hover:text-[#2d5080] font-semibold">Vermietungs-Schritte</a>
+      <a href="#contact" class="text-white hover:text-[#2d5080] font-semibold">Kontakt</a>
+      <a href="#impressum" class="text-white hover:text-[#2d5080] font-semibold">Impressum</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Sektion -->
+  <section id="hero" class="relative h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?q=80&w=2070&auto=format&fit=crop')">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center p-4 max-w-4xl mx-auto">
+      <div class="animate-fade-in-up">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6">BERIMMO</h1>
+        <p class="text-lg sm:text-xl md:text-2xl italic px-4">Revolutionäre Immobilienlösungen - Made in Berlin</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <div class="container mx-auto px-4 sm:px-6 py-12 md:py-20 space-y-16 md:space-y-20">
+    <!-- Über uns -->
+    <section id="about" class="animate-on-scroll">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Über uns</h2>
+      <div class="bg-[#f9f9f9] p-4 sm:p-6 border-l-4 border-[#2d5080] rounded-r-lg space-y-4">
+        <p class="font-bold text-lg sm:text-xl md:text-2xl">BERIMMO – das revolutionäre Immo-Startup Made in Berlin – for Berlin</p>
+        <p class="text-base sm:text-lg md:text-xl">BERIMMO – gegründet von zwei qualifizierten und aufstrebenden Immobilienkaufleuten in Berlin, die es sich zur Aufgabe gemacht haben, die Immobilienwirtschaft – insbesondere den Vermietungssektor – nachhaltig zu revolutionieren.</p>
+        <p class="text-base sm:text-lg md:text-xl">Basierend auf langjährigen Erfahrungen im klassischen Property-Management haben sie erkannt, wo die Schwachpunkte für Vermieter und Mieter liegen.<br /> Und eines wurde dabei deutlich: Vermietung kann effizienter gehen. Viel effizienter.</p>
+        <p class="text-base sm:text-lg md:text-xl">Aus dieser Idee und diesen Erkenntnissen entstand BERIMMO:<br /> modern, digital, klar strukturiert.</p>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="gallery" class="animate-on-scroll">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Unsere Galerie</h2>
+      <div class="bg-[#f9f9f9] p-4 sm:p-6 rounded-lg">
+        <div class="gallery-container relative h-48 sm:h-64 md:h-80 lg:h-96 overflow-hidden rounded-lg">
+          <!-- Slides -->
+          <div class="gallery-slides relative w-full h-full">
+            <div class="gallery-slide active">
+              <img src="img/1.jpg" alt="Design 1" class="gallery-image" />
+            </div>
+            <div class="gallery-slide">
+              <img src="img/2.jpg" alt="Design 2" class="gallery-image" />
+            </div>
+            <div class="gallery-slide">
+              <img src="img/3.jpg" alt="Design 3" class="gallery-image" />
+            </div>
+            <div class="gallery-slide">
+              <img src="img/4.jpg" alt="Design 4" class="gallery-image" />
+            </div>
+            <div class="gallery-slide">
+              <img src="img/5.jpg" alt="Design 5" class="gallery-image" />
+            </div>
+          </div>
+          <!-- Navigation arrows -->
+          <button id="gallery-prev" class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#1e3a5f] p-2 rounded-full shadow-md transition-all duration-300 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button id="gallery-next" class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#1e3a5f] p-2 rounded-full shadow-md transition-all duration-300 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <!-- Dots Navigation -->
+          <div class="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+            <div class="gallery-dot w-2 h-2 sm:w-3 sm:h-3 bg-white/70 rounded-full cursor-pointer active" data-index="0"></div>
+            <div class="gallery-dot w-2 h-2 sm:w-3 sm:h-3 bg-white/70 rounded-full cursor-pointer" data-index="1"></div>
+            <div class="gallery-dot w-2 h-2 sm:w-3 sm:h-3 bg-white/70 rounded-full cursor-pointer" data-index="2"></div>
+            <div class="gallery-dot w-2 h-2 sm:w-3 sm:h-3 bg-white/70 rounded-full cursor-pointer" data-index="3"></div>
+            <div class="gallery-dot w-2 h-2 sm:w-3 sm:h-3 bg-white/70 rounded-full cursor-pointer" data-index="4"></div>
+          </div>
+        </div>
+        <p class="mt-4 text-center text-gray-600 text-sm sm:text-base">Entdecken Sie unsere Design-Inspirationen</p>
+      </div>
+    </section>
+
+    <!-- Schritte -->
+    <section id="steps" class="animate-on-scroll">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Unsere Vermietungs-Steps</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+        <!-- Schritt 1 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">1</span>
+            <span class="pt-0.5">Wohnung wird gemeldet</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Sie informieren uns über eine freiwerdende Wohnung.</p>
+        </div>
+        <!-- Schritt 2 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">2</span>
+            <span class="pt-0.5">Objektaufnahme & Systemerfassung</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Wir erfassen alle Wohnungsdaten, erstellen Exposé, Fotos und Unterlagen.</p>
+        </div>
+        <!-- Schritt 3 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">3</span>
+            <span class="pt-0.5">Matching</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Wir gleichen die Wohnungsdaten automatisch mit unserer verifizierten Interessentenkartei ab.</p>
+        </div>
+        <!-- Schritt 4 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">4</span>
+            <span class="pt-0.5">Einzelbesichtigungen</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Wir koordinieren und führen individuelle Besichtigungen durch – ohne Massenandrang.</p>
+        </div>
+        <!-- Schritt 5 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">5</span>
+            <span class="pt-0.5">Auswahl des passenden Mieters</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Die Bewerber werden gefiltert – passend zu Ihren Kriterien und Vermieterpräferenzen.</p>
+        </div>
+        <!-- Schritt 6 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">6</span>
+            <span class="pt-0.5">Freigabe durch den Vermieter</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Sie entscheiden, wem die Wohnung zugesagt wird.</p>
+        </div>
+        <!-- Schritt 7 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">7</span>
+            <span class="pt-0.5">Vertragsabschluss (optional)</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Wir bereiten den Mietvertrag vor und begleiten die Vertragsunterzeichnung.</p>
+        </div>
+        <!-- Schritt 8 -->
+        <div class="bg-[#f0f5ff] p-4 rounded-md">
+          <div class="font-bold text-[#1e3a5f] mb-2 flex items-start">
+            <span class="bg-[#2d5080] text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full inline-flex items-center justify-center mr-3 font-bold flex-shrink-0 mt-0.5">8</span>
+            <span class="pt-0.5">Wohnungsübergabe (optional)</span>
+          </div>
+          <p class="ml-10 text-sm sm:text-base">Übergabeprotokoll, Schlüsselübergabe – alles dokumentiert und abgeschlossen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="contact" class="animate-on-scroll">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Kontakt</h2>
+      <div class="bg-[#e8eff7] p-4 sm:p-6 rounded-md">
+        <h3 class="mt-0 text-[#1e3a5f] text-xl sm:text-2xl md:text-3xl font-semibold mb-4">BERIMMO by WindStone Real Estate GmbH</h3>
+        <p class="text-base sm:text-lg mb-4 italic">Ihr Partner für moderne Vermietung</p>
+        <div class="space-y-3 text-base sm:text-lg md:text-xl">
+          <p class="flex items-start">
+            <i class="fas fa-map-marker-alt text-[#2d5080] mt-1 mr-3 w-5"></i>
+            <span><strong>Adresse:</strong> <span class="ml-1">Badenallee 19, 14052 Berlin</span></span>
+          </p>
+          <p class="flex items-start">
+            <i class="fas fa-mobile-alt text-[#2d5080] mt-1 mr-3 w-5"></i>
+            <span><strong>Mobil:</strong> <a href="tel:+4917681443526" class="underline hover:text-[#2d5080] ml-1">+49 176 814 435 26</a></span>
+          </p>
+          <p class="flex items-start">
+            <i class="fas fa-phone-alt text-[#2d5080] mt-1 mr-3 w-5"></i>
+            <span><strong>Telefon:</strong> <a href="tel:+493098569495" class="underline hover:text-[#2d5080] ml-1">+49 30 985 694 95</a></span>
+          </p>
+          <p class="flex items-start">
+            <i class="fas fa-envelope text-[#2d5080] mt-1 mr-3 w-5"></i>
+            <span><strong>E-Mail:</strong> <a href="mailto:info@ber-immo.de" class="underline hover:text-[#2d5080] ml-1">info@ber-immo.de</a></span>
+          </p>
+          <p class="flex items-start">
+            <i class="fas fa-globe text-[#2d5080] mt-1 mr-3 w-5"></i>
+            <span><strong>Internet:</strong> <a href="https://www.ber-immo.de" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#2d5080] ml-1">www.ber-immo.de</a></span>
+          </p>
+          <p class="mt-6 font-semibold text-lg">Kontaktieren Sie uns für eine kostenlose Erstberatung!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impressum -->
+    <section id="impressum" class="animate-on-scroll">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e3a5f] border-b-2 border-[#2d5080] pb-2 mb-6">Impressum</h2>
+      <div class="bg-[#f9f9f9] p-4 sm:p-6 rounded-lg space-y-4 text-base sm:text-lg">
+        <div>
+          <p class="font-bold text-lg">BERIMMO by WindStone Real Estate GmbH</p>
+          <p>Badenallee 19</p>
+          <p>14052 Berlin</p>
+        </div>
+        <div>
+          <p><strong>Mobil:</strong> <a href="tel:+4917681443526" class="underline hover:text-[#2d5080]">+49 176 814 435 26</a></p>
+          <p><strong>Telefon:</strong> <a href="tel:+493098569495" class="underline hover:text-[#2d5080]">+49 30 985 694 95</a></p>
+          <p><strong>E-Mail:</strong> <a href="mailto:info@ber-immo.de" class="underline hover:text-[#2d5080]">info@ber-immo.de</a></p>
+          <p><strong>Internet:</strong> <a href="https://www.ber-immo.de" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#2d5080]">www.ber-immo.de</a></p>
+        </div>
+        <div>
+          <p class="font-bold">Geschäftsführer:</p>
+          <p>S. Ramdan</p>
+        </div>
+        <div>
+          <p class="font-bold">Registergericht:</p>
+          <p>Amtsgericht Berlin Charlottenburg</p>
+          <p>Registernummer: HRB 162548 B</p>
+        </div>
+        <div>
+          <p class="font-bold">Umsatzsteuer-Identifikationsnummer:</p>
+          <p>USt-IdNr.: DE297472523</p>
+        </div>
+        <div>
+          <p class="font-bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</p>
+          <p>S. Ramdan</p>
+          <p>Badenallee 19, 14052 Berlin</p>
+        </div>
+        <div class="pt-4 border-t border-gray-300">
+          <p class="font-bold">Haftungsausschluss:</p>
+          <p class="text-sm sm:text-base mt-2">Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1e3a5f] text-white text-center p-4 text-sm">
+  <p>&copy; 2025 BERIMMO. Alle Rechte vorbehalten. | <a href="#impressum" class="hover:underline">Impressum</a> | <a href="#datenschutz" class="hover:underline">Datenschutz</a> | <a href="#agb" class="hover:underline">AGB</a></p>
+</footer>
+
+<script>
+  // Navbar Effekte
+  const navbar = document.getElementById('navbar');
+
+  function updateNavbar() {
+    if (window.scrollY > 10) {
+      navbar.classList.remove('bg-transparent');
+      navbar.classList.add('bg-white/95', 'shadow-lg', 'backdrop-blur-sm');
+      document.querySelector('#nav-title').classList.remove('text-white');
+      document.querySelector('#nav-title').classList.add('text-[#1e3a5f]');
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('text-white', 'hover:text-gray-200');
+        link.classList.add('text-[#1e3a5f]', 'hover:text-[#2d5080]');
+      });
+    } else {
+      navbar.classList.add('bg-transparent');
+      navbar.classList.remove('bg-white/95', 'shadow-lg', 'backdrop-blur-sm');
+      document.querySelector('#nav-title').classList.remove('text-[#1e3a5f]');
+      document.querySelector('#nav-title').classList.add('text-white');
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.add('text-white', 'hover:text-gray-200');
+        link.classList.remove('text-[#1e3a5f]', 'hover:text-[#2d5080]');
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar);
+  updateNavbar();
+
+  // Scroll-Animation
+  const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  animatedElements.forEach(el => observer.observe(el));
+
+  // Galerie
+  const slides = document.querySelectorAll('.gallery-slide');
+  const dots = document.querySelectorAll('.gallery-dot');
+  const prevBtn = document.getElementById('gallery-prev');
+  const nextBtn = document.getElementById('gallery-next');
+  let currentSlide = 0;
+  let slideInterval;
+
+  function showSlide(index) {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const index = (currentSlide + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    const index = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      resetInterval();
+    });
+  });
+
+  function startInterval() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+  function resetInterval() {
+    clearInterval(slideInterval);
+    startInterval();
+  }
+  startInterval();
+
+  // Touch Support für Galerie
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const galleryContainer = document.querySelector('.gallery-container');
+
+  galleryContainer.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  galleryContainer.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const threshold = 50;
+    if (touchEndX < touchStartX - threshold) {
+      nextSlide();
+      resetInterval();
+    } else if (touchEndX > touchStartX + threshold) {
+      prevSlide();
+      resetInterval();
+    }
+  }
+
+  // Smooth Scroll für Navigation
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
