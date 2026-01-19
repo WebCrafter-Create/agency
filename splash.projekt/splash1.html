@@ -1,0 +1,161 @@
+<!DOCTYPE html> <!-- Dokumenttyp-Deklaration für HTML5 -->
+<html lang="de"> <!-- Wurzelelement mit Sprachattribut (Deutsch) -->
+<head> <!-- Kopfbereich für Metadaten und Ressourcen -->
+    <meta charset="UTF-8"> <!-- Zeichenkodierung für Umlaute (ä, ö, ü, ß) -->
+    <title>GreenWear – Splash</title> <!-- Seitentitel (erscheint im Browser-Tab) -->
+
+    <style> /* <!-- Beginn des internen CSS-Stylesheets --> */
+        /* Reset - Entfernt Browser-Standardstyles */
+        * { /* Universalselektor - gilt für ALLE HTML-Elemente */
+            margin: 0; /* Setzt äußeren Abstand aller Elemente auf 0 */
+            padding: 0; /* Setzt inneren Abstand aller Elemente auf 0 */
+            box-sizing: border-box; /* WICHTIG: Padding und Border werden in width/height eingerechnet */
+        }
+
+        body { /* Stile für den gesamten Seitenkörper */
+            height: 100vh; /* Volle Viewport-Höhe (100% der Bildschirmhöhe) */
+            font-family: Arial, sans-serif; /* Schriftart mit Fallback auf sans-serif */
+            color: #f5f5f5; /* Textfarbe (hellgrau) */
+            /* Hintergrundverlauf mit Animation */
+            background: linear-gradient( /* Linearer Farbverlauf */
+                120deg, /* Verlaufswinkel (120 Grad = diagonal) */
+                #000000, /* Startfarbe: Schwarz */
+                #1a1a1a, /* Dunkelgrau */
+                #bfa14a, /* Gold-Akzentfarbe */
+                #000000  /* Endfarbe: Schwarz */
+            );
+            background-size: 300% 300%; /* Vergrößert den Hintergrund für sichtbare Animation */
+            animation: goldFlow 10s ease infinite; /* Animationsname, Dauer, Timing-Function, Wiederholung */
+
+            /* Flexbox für vertikale und horizontale Zentrierung */
+            display: flex; /* Aktiviert Flexbox-Layout */
+            flex-direction: column; /* Elemente untereinander anordnen */
+            justify-content: center; /* Vertikal zentrieren */
+            align-items: center; /* Horizontal zentrieren */
+            text-align: center; /* Textinhalt zentrieren */
+            padding: 20px; /* Innenabstand zum Viewport-Rand */
+        }
+
+        /* Keyframes-Definition für Hintergrundanimation */
+        @keyframes goldFlow { /* Name der Animation (muss mit animation-Property übereinstimmen) */
+            0% { background-position: 0% 50%; } /* Startposition des Verlaufs */
+            50% { background-position: 100% 50%; } /* Mittelposition - Verlauf wandert nach rechts */
+            100% { background-position: 0% 50%; } /* Endposition - zurück zum Start (endlose Schleife) */
+        }
+
+        h1 { /* Stile für Hauptüberschrift */
+            font-size: 4rem; /* Sehr große Schrift (4x Standardgröße) */
+            letter-spacing: 4px; /* Zeichenabstand für bessere Lesbarkeit/Stil */
+            margin-bottom: 1rem; /* Abstand nach unten (relativ zur Schriftgröße) */
+        }
+
+        p { /* Stile für Absatztext */
+            font-size: 1.2rem; /* Etwas größer als Standard (1.2x) */
+            margin-bottom: 2rem; /* Abstand nach unten */
+            opacity: 0.85; /* Leichte Transparenz (85% deckend) */
+        }
+
+        form { /* Stile für das Formular */
+            display: flex; /* Flexbox-Layout für Formularelemente */
+            flex-direction: column; /* Elemente untereinander anordnen */
+            align-items: center; /* Horizontal zentrieren */
+            gap: 15px; /* NEUES CSS: Abstand zwischen allen Flex-Items (Label, Input, Button) */
+            margin-top: 1.5rem; /* Abstand nach oben zur vorherigen Beschreibung */
+        }
+
+        label { /* Stile für Formular-Beschriftung */
+            font-size: 1rem; /* Standardschriftgröße */
+            margin-bottom: 5px; /* Abstand nach unten (redundant wegen gap, aber für ältere Browser) */
+        }
+
+        input[type="date"] { /* Spezifische Stile für Date-Input-Felder */
+            padding: 10px; /* Innenabstand für bessere Klickbarkeit */
+            font-size: 1rem; /* Schriftgröße */
+            border: 2px solid #bfa14a; /* Goldener Rahmen */
+            background: transparent; /* Transparenter Hintergrund */
+            color: #f5f5f5; /* Helle Textfarbe */
+            border-radius: 5px; /* Abgerundete Ecken */
+        }
+
+        /* Browser-spezifische Pseudo-Elemente für Date-Input */
+        input[type="date"]::-webkit-inner-spin-button,
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1); /* Invertiert die Farbe (macht weiß auf schwarz) */
+        }
+
+        button { /* Stile für alle Buttons */
+            padding: 12px 30px; /* Innenabstand (vertikal, horizontal) */
+            font-size: 1rem; /* Schriftgröße */
+            letter-spacing: 1px; /* Leichter Zeichenabstand */
+            background: transparent; /* Transparenter Hintergrund */
+            color: #bfa14a; /* Goldene Textfarbe */
+            border: 2px solid #bfa14a; /* Goldener Rahmen */
+            cursor: pointer; /* Zeiger-Cursor bei Hover */
+            transition: all 0.3s ease; /* Glatte Übergänge für alle änderbaren Eigenschaften */
+            border-radius: 5px; /* Abgerundete Ecken */
+        }
+
+        button:hover { /* Stile bei Mouse-Hover über Button */
+            background: #bfa14a; /* Füllt mit goldener Farbe */
+            color: #000; /* Text wird schwarz */
+        }
+
+        .error { /* Stile für Fehlermeldungen */
+            color: #ff4d4d; /* Rote Fehlerfarbe */
+            font-size: 0.9rem; /* Etwas kleinere Schrift */
+        }
+    </style> <!-- Ende des CSS-Stylesheets -->
+</head>
+
+<body> <!-- Beginn des sichtbaren Seiteninhalts -->
+
+    <h1>GreenWear</h1> <!-- Hauptüberschrift der Splash-Seite -->
+    <p>Nachhaltige Streetwear. Fair produziert.</p> <!-- Untertitel/Beschreibung -->
+
+    <!-- Formular für Altersüberprüfung mit JavaScript-Handler -->
+    <form id="ageForm"> <!-- Formular mit ID für JavaScript-Zugriff -->
+        <label for="birthdate">Bitte geben Sie Ihr Geburtsdatum ein:</label> <!-- Beschriftung für Input -->
+        <input type="date" id="birthdate" required> <!-- Date-Input mit Pflichtfeld und ID -->
+        <button type="submit">Kollektion entdecken</button> <!-- Submit-Button -->
+        <div class="error" id="errorMsg"></div> <!-- Container für Fehlermeldungen (anfangs leer) -->
+    </form>
+
+    <script> <!-- Beginn des JavaScript-Codes (Client-seitig) -->
+        // DOM-Elemente über ihre IDs auswählen
+        const form = document.getElementById('ageForm'); // Das Formular-Element
+        const birthdateInput = document.getElementById('birthdate'); // Das Date-Input-Feld
+        const errorMsg = document.getElementById('errorMsg'); // Div für Fehlermeldungen
+
+        // Event-Listener für Formular-Submit (beim Absenden)
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // VERHINDERT das normale Formular-Absenden (Seitenneuladung)
+
+            // Wert des Date-Inputs in ein Date-Objekt umwandeln
+            const birthdate = new Date(birthdateInput.value);
+            const today = new Date(); // Aktuelles Datum
+
+            // Altersberechnung: Grundlegende Jahresdifferenz
+            let age = today.getFullYear() - birthdate.getFullYear();
+            
+            // Korrektur für Geburtstage, die dieses Jahr noch nicht waren
+            const monthDiff = today.getMonth() - birthdate.getMonth();
+            const dayDiff = today.getDate() - birthdate.getDate();
+            
+            // Wenn der Geburtstag dieses Jahr noch nicht war, reduziere Alter um 1
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            // Altersüberprüfung (Mindestalter 18)
+            if (age >= 18) {
+                // Weiterleitung zur Hauptseite
+                window.location.href = "landing1.html"; // Ändert die URL im Browser
+            } else {
+                // Fehlermeldung anzeigen (unter 18)
+                errorMsg.textContent = "Sie müssen mindestens 18 Jahre alt sein, um die Seite zu betreten.";
+            }
+        });
+    </script> <!-- Ende des JavaScript-Codes -->
+
+</body> <!-- Ende des Seiteninhalts -->
+</html> <!-- Ende des HTML-Dokuments -->

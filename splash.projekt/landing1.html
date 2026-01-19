@@ -1,0 +1,296 @@
+<!DOCTYPE html> <!-- Dokumenttyp-Deklaration - definiert HTML5 -->
+<html lang="de"> <!-- Wurzelelement mit Sprachattribut (deutsch) -->
+<head> <!-- Kopfbereich für Metadaten und Ressourcen -->
+    <meta charset="UTF-8"> <!-- Zeichenkodierung (UTF-8 für Umlaute/Sonderzeichen) -->
+    <title>GreenWear – Shop</title> <!-- Seitentitel (Browser-Tab/Suchmaschine) -->
+
+    <style> <!-- Interne CSS-Styles (könnte auch extern sein) -->
+        /* Reset - entfernt Browser-Standardstyles */
+        * { /* Universalselektor (alle Elemente) */
+            margin: 0; /* Äußere Abstände auf 0 */
+            padding: 0; /* Innere Abstände auf 0 */
+            box-sizing: border-box; /* Box-Modell: Padding/Border inkludiert in width/height */
+        }
+
+        body { /* Selektiert <body>-Element */
+            min-height: 100vh; /* Mindesthöhe = 100% der Viewport-Höhe */
+            font-family: Arial, sans-serif; /* Schriftart mit Fallback */
+            color: #f5f5f5; /* Textfarbe (hellgrau) */
+
+            /* Hintergrundverlauf mit Animation */
+            background: linear-gradient( /* Linearer Farbverlauf */
+                120deg, /* Winkel des Verlaufs (120 Grad) */
+                #000000, /* Startfarbe */
+                #141414, /* Zweite Farbe */
+                #bfa14a, /* Gold-Akzentfarbe */
+                #000000  /* Endfarbe */
+            );
+            background-size: 300% 300%; /* Vergrößert Hintergrund für Animation */
+            animation: goldFlow 12s ease infinite; /* Animationseigenschaften */
+        }
+
+        /* Keyframes für Hintergrund-Animation */
+        @keyframes goldFlow { /* Definiert Animationssequenz */
+            0% { background-position: 0% 50%; } /* Startposition */
+            50% { background-position: 100% 50%; } /* Mittelposition */
+            100% { background-position: 0% 50%; } /* Endposition (zurück) */
+        }
+
+        /* HEADER-BEREICH */
+        header { /* Stil für <header>-Element */
+            padding: 30px; /* Innenabstand */
+            text-align: center; /* Text zentrieren */
+            border-bottom: 1px solid rgba(191,161,74,0.3); /* Untere Border (transparent gold) */
+            position: sticky; /* "Klebrige" Position beim Scrollen */
+            top: 0; /* Oben an Viewport kleben */
+            background: rgba(0,0,0,0.85); /* Schwarzer Hintergrund mit 85% Deckkraft */
+            z-index: 10; /* Stacking Order (über anderen Elementen) */
+        }
+
+        header h1 { /* h1 innerhalb header */
+            font-size: 3rem; /* Schriftgröße (relativ zu root) */
+            letter-spacing: 3px; /* Zeichenabstand */
+            margin-bottom: 10px; /* Abstand nach unten */
+        }
+
+        /* NAVIGATIONSLINKS */
+        nav a { /* <a> innerhalb <nav> */
+            color: #bfa14a; /* Goldene Farbe */
+            text-decoration: none; /* Entfernt Unterstreichung */
+            margin: 0 12px; /* Horizontaler Abstand (links/rechts) */
+            font-size: 1rem; /* Basis-Schriftgröße */
+        }
+
+        nav a:hover { /* Hover-Zustand der Links */
+            text-decoration: underline; /* Unterstreichung bei Hover */
+        }
+
+        /* HAUPTINHALT */
+        main { /* <main>-Element */
+            padding: 80px 10%; /* Oben/unten 80px, links/rechts 10% */
+        }
+
+        /* GENERISCHE SECTION */
+        section { /* Alle <section>-Elemente */
+            margin-bottom: 120px; /* Abstand nach unten */
+        }
+
+        section h2 { /* h2 innerhalb section */
+            text-align: center; /* Zentrierte Ausrichtung */
+            font-size: 2.2rem; /* Schriftgröße */
+            margin-bottom: 50px; /* Abstand nach unten */
+            letter-spacing: 2px; /* Zeichenabstand */
+        }
+
+        /* START/HERO-SECTION */
+        #start { /* Element mit ID="start" */
+            text-align: center; /* Text zentrieren */
+            max-width: 800px; /* Maximale Breite */
+            margin: 0 auto 120px auto; /* Zentrierung: oben 0, auto links/rechts, unten 120px */
+            /* Kurzform: top right bottom left */
+        }
+
+        #start h2 { /* h2 in #start */
+            font-size: 3rem; /* Größere Schrift */
+            margin-bottom: 20px; /* Abstand */
+        }
+
+        #start p { /* p in #start */
+            font-size: 1.2rem; /* Schriftgröße */
+            opacity: 0.85; /* Transparenz (85% sichtbar) */
+            margin-bottom: 40px; /* Abstand */
+        }
+
+        /* PRODUKT-GRID */
+        .products { /* Element mit class="products" */
+            display: grid; /* CSS Grid Layout aktivieren */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            /* auto-fit: passt Anzahl der Spalten an */
+            /* minmax(250px, 1fr): mind. 250px, max. 1 Fractional Unit */
+            gap: 30px; /* Abstand zwischen Grid-Items */
+        }
+
+        /* PRODUKT-ARTIKEL */
+        article { /* <article>-Element */
+            background: rgba(0,0,0,0.6); /* Schwarz mit 60% Deckkraft */
+            border: 1px solid rgba(191,161,74,0.3); /* Goldener Rand */
+            padding: 25px; /* Innenabstand */
+            text-align: center; /* Zentrierter Inhalt */
+            border-radius: 6px; /* Abgerundete Ecken */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            /* Übergangseffekte für transform und box-shadow */
+        }
+
+        article:hover { /* Hover-Zustand des Artikels */
+            transform: translateY(-8px); /* 8px nach oben verschieben */
+            box-shadow: 0 10px 30px rgba(191,161,74,0.25); /* Goldener Schatten */
+        }
+
+        article img { /* Bilder innerhalb article */
+            width: 100%; /* Volle Breite des Containers */
+            height: 220px; /* Feste Höhe */
+            object-fit: cover; /* Bild zuschneiden/abdecken */
+            margin-bottom: 15px; /* Abstand nach unten */
+            padding: 6px; /* Innenabstand um Bild */
+            border: 2px solid #bfa14a; /* Goldener Rahmen */
+            border-radius: 6px; /* Abgerundete Ecken */
+            background: linear-gradient(135deg, #bfa14a, #f5e7a1, #bfa14a); 
+            /* Verlauf hinter Bild */
+            transition: transform 0.35s ease, box-shadow 0.35s ease; 
+            /* Übergang für Bild-Animation */
+        }
+
+        article:hover img { /* Bild-Hover bei Artikel-Hover */
+            transform: scale(1.04); /* 4% vergrößern */
+            box-shadow: 0 0 28px rgba(191,161,74,0.45); /* Glow-Effekt */
+        }
+
+        article h3 { /* Überschrift Level 3 in article */
+            font-size: 1.4rem; /* Schriftgröße */
+            margin-bottom: 10px; /* Abstand */
+            color: #bfa14a; /* Goldene Farbe */
+        }
+
+        article p { /* Absätze in article */
+            font-size: 0.95rem; /* Etwas kleinere Schrift */
+            margin-bottom: 10px; /* Abstand */
+            opacity: 0.85; /* Leichte Transparenz */
+        }
+
+        .price { /* Element mit class="price" */
+            font-weight: bold; /* Fettschrift */
+            margin: 15px 0; /* Abstand oben/unten */
+        }
+
+        /* BUTTON-STIL */
+        button { /* Alle Button-Elemente */
+            padding: 10px 25px; /* Innenabstand (vert/horz) */
+            background: transparent; /* Transparenter Hintergrund */
+            color: #bfa14a; /* Goldene Textfarbe */
+            border: 2px solid #bfa14a; /* Goldener Rahmen */
+            cursor: pointer; /* Zeiger-Cursor bei Hover */
+            letter-spacing: 1px; /* Zeichenabstand */
+            transition: all 0.3s ease; /* Übergang für alle Eigenschaften */
+        }
+
+        button:hover { /* Button-Hover-Zustand */
+            background: #bfa14a; /* Goldener Hintergrund */
+            color: #000; /* Schwarzer Text */
+        }
+
+        /* KONTAKT-FORMULAR */
+        #kontakt { /* Element mit ID="kontakt" */
+            max-width: 600px; /* Maximale Breite */
+            margin: 0 auto; /* Horizontal zentrieren */
+            text-align: center; /* Text zentrieren */
+        }
+
+        form { /* <form>-Element */
+            display: flex; /* Flexbox Layout aktivieren */
+            flex-direction: column; /* Elemente untereinander */
+            gap: 15px; /* Abstand zwischen Flex-Items */
+        }
+
+        input, textarea { /* Input- und Textarea-Elemente */
+            padding: 12px; /* Innenabstand */
+            background: rgba(0,0,0,0.6); /* Dunkler Hintergrund */
+            border: 1px solid rgba(191,161,74,0.4); /* Goldener Rahmen */
+            color: #fff; /* Weiße Schrift */
+            font-size: 1rem; /* Schriftgröße */
+        }
+
+        input:focus, textarea:focus { /* Fokus-Zustand */
+            outline: none; /* Entfernt Standard-Outline */
+            border-color: #bfa14a; /* Goldene Border bei Fokus */
+        }
+
+        /* FOOTER */
+        footer { /* <footer>-Element */
+            text-align: center; /* Zentrierter Text */
+            padding: 25px; /* Innenabstand */
+            border-top: 1px solid rgba(191,161,74,0.3); /* Obere Border */
+            font-size: 0.9rem; /* Kleinere Schrift */
+            opacity: 0.7; /* Transparenz */
+        }
+    </style>
+</head>
+
+<body> <!-- Hauptinhalt der Webseite -->
+
+<header> <!-- Kopfbereich (typisch für Logo/Navigation) -->
+    <h1>GreenWear</h1> <!-- Hauptüberschrift der Seite -->
+    <nav> <!-- Navigationsbereich -->
+        <a href="#start">Start</a> <!-- Ankerlink zur Start-Section -->
+        <a href="#produkte">Produkte</a> <!-- Link zur Produkte-Section -->
+        <a href="#kontakt">Kontakt</a> <!-- Link zur Kontakt-Section -->
+    </nav>
+</header>
+
+<main> <!-- Hauptinhalt (semantisches HTML5) -->
+
+    <!-- START-SECTION mit ID für Navigation -->
+    <section id="start"> <!-- Abschnitt mit eindeutiger ID -->
+        <h2>Nachhaltige Streetwear</h2> <!-- Überschrift Level 2 -->
+        <p>Fair produziert. Zeitloses Design. Verantwortung für morgen.</p> <!-- Absatz -->
+        <a href="#produkte"><button>Zur Kollektion</button></a> <!-- Button als Link -->
+    </section>
+
+    <!-- PRODUKTE-SECTION -->
+    <section id="produkte"> <!-- Abschnitt für Produkte -->
+        <h2>Unsere Produkte</h2> <!-- Überschrift -->
+
+        <div class="products"> <!-- Container mit Grid-Layout -->
+
+            <article> <!-- Selbstständiger Inhaltsblock -->
+                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" 
+                     alt="Eco Hoodie"> <!-- Bild mit alternativem Text -->
+                <h3>Eco Hoodie</h3> <!-- Produkttitel -->
+                <p>Bequemer Hoodie aus 100 % Bio-Baumwolle.</p> <!-- Beschreibung -->
+                <p class="price">59,99 €</p> <!-- Preis mit spezieller Klasse -->
+                <button>In den Warenkorb</button> <!-- Aktion-Button -->
+            </article>
+
+            <article>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" 
+                     alt="Green T-Shirt">
+                <h3>Green T-Shirt</h3>
+                <p>Nachhaltiges T-Shirt für jeden Tag.</p>
+                <p class="price">29,99 €</p>
+                <button>In den Warenkorb</button>
+            </article>
+
+            <article>
+                <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" 
+                     alt="Organic Sweatpants">
+                <h3>Organic Sweatpants</h3>
+                <p>Relaxed Fit aus fair produzierter Baumwolle.</p>
+                <p class="price">49,99 €</p>
+                <button>In den Warenkorb</button>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- KONTAKT-FORMULAR -->
+    <section id="kontakt"> <!-- Kontaktabschnitt -->
+        <h2>Kontakt</h2>
+
+        <form> <!-- Formularelement -->
+            <input type="text" placeholder="Name" required> 
+            <!-- Textinput mit Platzhalter und Pflichtfeld -->
+            <input type="email" placeholder="E-Mail" required> 
+            <!-- Email-Input mit Validierung -->
+            <textarea rows="5" placeholder="Nachricht"></textarea> 
+            <!-- Mehrzeiliges Textfeld -->
+            <button type="submit">Nachricht senden</button> <!-- Submit-Button -->
+        </form>
+    </section>
+
+</main>
+
+<footer> <!-- Fußbereich -->
+    <p>© 2026 GreenWear</p> <!-- Copyright-Information -->
+</footer>
+
+</body>
+</html>

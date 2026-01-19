@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenWear – Shop</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #f5f5f5;
+
+            background: linear-gradient(
+                120deg,
+                #000000,
+                #141414,
+                #bfa14a,
+                #000000
+            );
+            background-size: 300% 300%;
+            animation: goldFlow 12s ease infinite;
+        }
+
+        @keyframes goldFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(191,161,74,0.3);
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: #bfa14a;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 80px 10%;
+        }
+
+        section {
+            margin-bottom: 120px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        /* START / HERO */
+        #start {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 120px auto;
+        }
+
+        #start h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #start p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            margin-bottom: 40px;
+        }
+
+        /* PRODUKTE */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        article {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(191,161,74,0.3);
+            padding: 25px;
+            text-align: center;
+            border-radius: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(191,161,74,0.25);
+        }
+
+        article img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            padding: 6px;
+            border: 2px solid #bfa14a;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #bfa14a, #f5e7a1, #bfa14a);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        article:hover img {
+            transform: scale(1.04);
+            box-shadow: 0 0 28px rgba(191,161,74,0.45);
+        }
+
+        article h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #bfa14a;
+        }
+
+        article p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+
+        .price {
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 25px;
+            background: transparent;
+            color: #bfa14a;
+            border: 2px solid #bfa14a;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #bfa14a;
+            color: #000;
+        }
+
+        /* KONTAKT */
+        #kontakt {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(191,161,74,0.4);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #bfa14a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(191,161,74,0.3);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>GreenWear</h1>
+    <nav>
+        <a href="#start">Start</a>
+        <a href="#produkte">Produkte</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- START -->
+    <section id="start">
+        <h2>Nachhaltige Streetwear</h2>
+        <p>Fair produziert. Zeitloses Design. Verantwortung für morgen.</p>
+        <a href="#produkte"><button>Zur Kollektion</button></a>
+    </section>
+
+    <!-- PRODUKTE -->
+    <section id="produkte">
+        <h2>Unsere Produkte</h2>
+
+        <div class="products">
+
+            <article>
+                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Eco Hoodie">
+                <h3>Eco Hoodie</h3>
+                <p>Bequemer Hoodie aus 100 % Bio-Baumwolle.</p>
+                <p class="price">59,99 €</p>
+                <button>In den Warenkorb</button>
+            </article>
+
+            <article>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="Green T-Shirt">
+                <h3>Green T-Shirt</h3>
+                <p>Nachhaltiges T-Shirt für jeden Tag.</p>
+                <p class="price">29,99 €</p>
+                <button>In den Warenkorb</button>
+            </article>
+
+            <article>
+                <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" alt="Organic Sweatpants">
+                <h3>Organic Sweatpants</h3>
+                <p>Relaxed Fit aus fair produzierter Baumwolle.</p>
+                <p class="price">49,99 €</p>
+                <button>In den Warenkorb</button>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="E-Mail" required>
+            <textarea rows="5" placeholder="Nachricht"></textarea>
+            <button type="submit">Nachricht senden</button>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 GreenWear</p>
+</footer>
+
+</body>
+</html>

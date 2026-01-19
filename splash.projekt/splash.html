@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenWear – Splash</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #f5f5f5;
+            background: linear-gradient(
+                120deg,
+                #000000,
+                #1a1a1a,
+                #bfa14a,
+                #000000
+            );
+            background-size: 300% 300%;
+            animation: goldFlow 10s ease infinite;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @keyframes goldFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Abstand zwischen Label, Input und Button */
+            margin-top: 1.5rem; /* Abstand zur Beschreibung */
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #bfa14a;
+            background: transparent;
+            color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        input[type="date"]::-webkit-inner-spin-button,
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            background: transparent;
+            color: #bfa14a;
+            border: 2px solid #bfa14a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #bfa14a;
+            color: #000;
+        }
+
+        .error {
+            color: #ff4d4d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>GreenWear</h1>
+    <p>Nachhaltige Streetwear. Fair produziert.</p>
+
+    <form id="ageForm">
+        <label for="birthdate">Bitte geben Sie Ihr Geburtsdatum ein:</label>
+        <input type="date" id="birthdate" required>
+        <button type="submit">Kollektion entdecken</button>
+        <div class="error" id="errorMsg"></div>
+    </form>
+
+    <script>
+        const form = document.getElementById('ageForm');
+        const birthdateInput = document.getElementById('birthdate');
+        const errorMsg = document.getElementById('errorMsg');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert automatisches Absenden
+
+            const birthdate = new Date(birthdateInput.value);
+            const today = new Date();
+
+            let age = today.getFullYear() - birthdate.getFullYear();
+            const monthDiff = today.getMonth() - birthdate.getMonth();
+            const dayDiff = today.getDate() - birthdate.getDate();
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            if (age >= 18) {
+                window.location.href = "landing.html"; // Weiterleitung
+            } else {
+                errorMsg.textContent = "Sie müssen mindestens 18 Jahre alt sein, um die Seite zu betreten.";
+            }
+        });
+    </script>
+
+</body>
+</html>
